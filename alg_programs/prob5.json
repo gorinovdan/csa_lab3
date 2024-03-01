@@ -1,0 +1,3640 @@
+[
+    1,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    2,
+    0,
+    0,
+    1,
+    26,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    {
+        "opcode": "LWI",
+        "args": [
+            "1",
+            21
+        ]
+    },
+    {
+        "opcode": "SW",
+        "args": [
+            "4",
+            "1"
+        ]
+    },
+    {
+        "opcode": "SUBI",
+        "args": [
+            "4",
+            "4",
+            1
+        ]
+    },
+    {
+        "opcode": "SWI",
+        "args": [
+            "4",
+            21
+        ]
+    },
+    {
+        "opcode": "SUBI",
+        "args": [
+            "4",
+            "4",
+            1
+        ]
+    },
+    {
+        "opcode": "ADDI",
+        "args": [
+            "4",
+            "4",
+            1
+        ]
+    },
+    {
+        "opcode": "LW",
+        "args": [
+            "2",
+            "4"
+        ]
+    },
+    {
+        "opcode": "ADDI",
+        "args": [
+            "4",
+            "4",
+            1
+        ]
+    },
+    {
+        "opcode": "LW",
+        "args": [
+            "1",
+            "4"
+        ]
+    },
+    {
+        "opcode": "SLT",
+        "args": [
+            "3",
+            "1",
+            "2"
+        ]
+    },
+    {
+        "opcode": "SW",
+        "args": [
+            "4",
+            "3"
+        ]
+    },
+    {
+        "opcode": "SUBI",
+        "args": [
+            "4",
+            "4",
+            1
+        ]
+    },
+    {
+        "opcode": "ADDI",
+        "args": [
+            "4",
+            "4",
+            1
+        ]
+    },
+    {
+        "opcode": "LW",
+        "args": [
+            "1",
+            "4"
+        ]
+    },
+    {
+        "opcode": "BEQ",
+        "args": [
+            "1",
+            "0",
+            257
+        ]
+    },
+    {
+        "opcode": "ADDI",
+        "args": [
+            "1",
+            "0",
+            22
+        ]
+    },
+    {
+        "opcode": "SW",
+        "args": [
+            "4",
+            "1"
+        ]
+    },
+    {
+        "opcode": "SUBI",
+        "args": [
+            "4",
+            "4",
+            1
+        ]
+    },
+    {
+        "opcode": "LWI",
+        "args": [
+            "1",
+            21
+        ]
+    },
+    {
+        "opcode": "SW",
+        "args": [
+            "4",
+            "1"
+        ]
+    },
+    {
+        "opcode": "SUBI",
+        "args": [
+            "4",
+            "4",
+            1
+        ]
+    },
+    {
+        "opcode": "ADDI",
+        "args": [
+            "4",
+            "4",
+            1
+        ]
+    },
+    {
+        "opcode": "LW",
+        "args": [
+            "2",
+            "4"
+        ]
+    },
+    {
+        "opcode": "ADDI",
+        "args": [
+            "4",
+            "4",
+            1
+        ]
+    },
+    {
+        "opcode": "LW",
+        "args": [
+            "1",
+            "4"
+        ]
+    },
+    {
+        "opcode": "SW",
+        "args": [
+            "1",
+            "2"
+        ]
+    },
+    {
+        "opcode": "ADDI",
+        "args": [
+            "1",
+            "0",
+            23
+        ]
+    },
+    {
+        "opcode": "SW",
+        "args": [
+            "4",
+            "1"
+        ]
+    },
+    {
+        "opcode": "SUBI",
+        "args": [
+            "4",
+            "4",
+            1
+        ]
+    },
+    {
+        "opcode": "SWI",
+        "args": [
+            "4",
+            0
+        ]
+    },
+    {
+        "opcode": "SUBI",
+        "args": [
+            "4",
+            "4",
+            1
+        ]
+    },
+    {
+        "opcode": "ADDI",
+        "args": [
+            "4",
+            "4",
+            1
+        ]
+    },
+    {
+        "opcode": "LW",
+        "args": [
+            "2",
+            "4"
+        ]
+    },
+    {
+        "opcode": "ADDI",
+        "args": [
+            "4",
+            "4",
+            1
+        ]
+    },
+    {
+        "opcode": "LW",
+        "args": [
+            "1",
+            "4"
+        ]
+    },
+    {
+        "opcode": "SW",
+        "args": [
+            "1",
+            "2"
+        ]
+    },
+    {
+        "opcode": "LWI",
+        "args": [
+            "1",
+            23
+        ]
+    },
+    {
+        "opcode": "SW",
+        "args": [
+            "4",
+            "1"
+        ]
+    },
+    {
+        "opcode": "SUBI",
+        "args": [
+            "4",
+            "4",
+            1
+        ]
+    },
+    {
+        "opcode": "SWI",
+        "args": [
+            "4",
+            20
+        ]
+    },
+    {
+        "opcode": "SUBI",
+        "args": [
+            "4",
+            "4",
+            1
+        ]
+    },
+    {
+        "opcode": "ADDI",
+        "args": [
+            "4",
+            "4",
+            1
+        ]
+    },
+    {
+        "opcode": "LW",
+        "args": [
+            "2",
+            "4"
+        ]
+    },
+    {
+        "opcode": "ADDI",
+        "args": [
+            "4",
+            "4",
+            1
+        ]
+    },
+    {
+        "opcode": "LW",
+        "args": [
+            "1",
+            "4"
+        ]
+    },
+    {
+        "opcode": "SLT",
+        "args": [
+            "3",
+            "1",
+            "2"
+        ]
+    },
+    {
+        "opcode": "SW",
+        "args": [
+            "4",
+            "3"
+        ]
+    },
+    {
+        "opcode": "SUBI",
+        "args": [
+            "4",
+            "4",
+            1
+        ]
+    },
+    {
+        "opcode": "LWI",
+        "args": [
+            "1",
+            0
+        ]
+    },
+    {
+        "opcode": "SW",
+        "args": [
+            "4",
+            "1"
+        ]
+    },
+    {
+        "opcode": "SUBI",
+        "args": [
+            "4",
+            "4",
+            1
+        ]
+    },
+    {
+        "opcode": "LWI",
+        "args": [
+            "1",
+            23
+        ]
+    },
+    {
+        "opcode": "SW",
+        "args": [
+            "4",
+            "1"
+        ]
+    },
+    {
+        "opcode": "SUBI",
+        "args": [
+            "4",
+            "4",
+            1
+        ]
+    },
+    {
+        "opcode": "ADDI",
+        "args": [
+            "4",
+            "4",
+            1
+        ]
+    },
+    {
+        "opcode": "LW",
+        "args": [
+            "2",
+            "4"
+        ]
+    },
+    {
+        "opcode": "ADDI",
+        "args": [
+            "4",
+            "4",
+            1
+        ]
+    },
+    {
+        "opcode": "LW",
+        "args": [
+            "1",
+            "4"
+        ]
+    },
+    {
+        "opcode": "ADD",
+        "args": [
+            "3",
+            "1",
+            "2"
+        ]
+    },
+    {
+        "opcode": "LW",
+        "args": [
+            "1",
+            "3"
+        ]
+    },
+    {
+        "opcode": "SW",
+        "args": [
+            "4",
+            "1"
+        ]
+    },
+    {
+        "opcode": "SUBI",
+        "args": [
+            "4",
+            "4",
+            1
+        ]
+    },
+    {
+        "opcode": "ADDI",
+        "args": [
+            "4",
+            "4",
+            1
+        ]
+    },
+    {
+        "opcode": "LW",
+        "args": [
+            "2",
+            "4"
+        ]
+    },
+    {
+        "opcode": "ADDI",
+        "args": [
+            "4",
+            "4",
+            1
+        ]
+    },
+    {
+        "opcode": "LW",
+        "args": [
+            "1",
+            "4"
+        ]
+    },
+    {
+        "opcode": "AND",
+        "args": [
+            "3",
+            "1",
+            "2"
+        ]
+    },
+    {
+        "opcode": "SW",
+        "args": [
+            "4",
+            "3"
+        ]
+    },
+    {
+        "opcode": "SUBI",
+        "args": [
+            "4",
+            "4",
+            1
+        ]
+    },
+    {
+        "opcode": "ADDI",
+        "args": [
+            "4",
+            "4",
+            1
+        ]
+    },
+    {
+        "opcode": "LW",
+        "args": [
+            "1",
+            "4"
+        ]
+    },
+    {
+        "opcode": "BEQ",
+        "args": [
+            "1",
+            "0",
+            200
+        ]
+    },
+    {
+        "opcode": "LWI",
+        "args": [
+            "1",
+            22
+        ]
+    },
+    {
+        "opcode": "SW",
+        "args": [
+            "4",
+            "1"
+        ]
+    },
+    {
+        "opcode": "SUBI",
+        "args": [
+            "4",
+            "4",
+            1
+        ]
+    },
+    {
+        "opcode": "LWI",
+        "args": [
+            "1",
+            0
+        ]
+    },
+    {
+        "opcode": "SW",
+        "args": [
+            "4",
+            "1"
+        ]
+    },
+    {
+        "opcode": "SUBI",
+        "args": [
+            "4",
+            "4",
+            1
+        ]
+    },
+    {
+        "opcode": "LWI",
+        "args": [
+            "1",
+            23
+        ]
+    },
+    {
+        "opcode": "SW",
+        "args": [
+            "4",
+            "1"
+        ]
+    },
+    {
+        "opcode": "SUBI",
+        "args": [
+            "4",
+            "4",
+            1
+        ]
+    },
+    {
+        "opcode": "ADDI",
+        "args": [
+            "4",
+            "4",
+            1
+        ]
+    },
+    {
+        "opcode": "LW",
+        "args": [
+            "2",
+            "4"
+        ]
+    },
+    {
+        "opcode": "ADDI",
+        "args": [
+            "4",
+            "4",
+            1
+        ]
+    },
+    {
+        "opcode": "LW",
+        "args": [
+            "1",
+            "4"
+        ]
+    },
+    {
+        "opcode": "ADD",
+        "args": [
+            "3",
+            "1",
+            "2"
+        ]
+    },
+    {
+        "opcode": "LW",
+        "args": [
+            "1",
+            "3"
+        ]
+    },
+    {
+        "opcode": "SW",
+        "args": [
+            "4",
+            "1"
+        ]
+    },
+    {
+        "opcode": "SUBI",
+        "args": [
+            "4",
+            "4",
+            1
+        ]
+    },
+    {
+        "opcode": "ADDI",
+        "args": [
+            "4",
+            "4",
+            1
+        ]
+    },
+    {
+        "opcode": "LW",
+        "args": [
+            "2",
+            "4"
+        ]
+    },
+    {
+        "opcode": "ADDI",
+        "args": [
+            "4",
+            "4",
+            1
+        ]
+    },
+    {
+        "opcode": "LW",
+        "args": [
+            "1",
+            "4"
+        ]
+    },
+    {
+        "opcode": "REM",
+        "args": [
+            "3",
+            "1",
+            "2"
+        ]
+    },
+    {
+        "opcode": "SW",
+        "args": [
+            "4",
+            "3"
+        ]
+    },
+    {
+        "opcode": "SUBI",
+        "args": [
+            "4",
+            "4",
+            1
+        ]
+    },
+    {
+        "opcode": "SWI",
+        "args": [
+            "4",
+            0
+        ]
+    },
+    {
+        "opcode": "SUBI",
+        "args": [
+            "4",
+            "4",
+            1
+        ]
+    },
+    {
+        "opcode": "ADDI",
+        "args": [
+            "4",
+            "4",
+            1
+        ]
+    },
+    {
+        "opcode": "LW",
+        "args": [
+            "2",
+            "4"
+        ]
+    },
+    {
+        "opcode": "ADDI",
+        "args": [
+            "4",
+            "4",
+            1
+        ]
+    },
+    {
+        "opcode": "LW",
+        "args": [
+            "1",
+            "4"
+        ]
+    },
+    {
+        "opcode": "SEQ",
+        "args": [
+            "3",
+            "1",
+            "2"
+        ]
+    },
+    {
+        "opcode": "SW",
+        "args": [
+            "4",
+            "3"
+        ]
+    },
+    {
+        "opcode": "SUBI",
+        "args": [
+            "4",
+            "4",
+            1
+        ]
+    },
+    {
+        "opcode": "ADDI",
+        "args": [
+            "4",
+            "4",
+            1
+        ]
+    },
+    {
+        "opcode": "LW",
+        "args": [
+            "1",
+            "4"
+        ]
+    },
+    {
+        "opcode": "BEQ",
+        "args": [
+            "1",
+            "0",
+            179
+        ]
+    },
+    {
+        "opcode": "ADDI",
+        "args": [
+            "1",
+            "0",
+            22
+        ]
+    },
+    {
+        "opcode": "SW",
+        "args": [
+            "4",
+            "1"
+        ]
+    },
+    {
+        "opcode": "SUBI",
+        "args": [
+            "4",
+            "4",
+            1
+        ]
+    },
+    {
+        "opcode": "LWI",
+        "args": [
+            "1",
+            22
+        ]
+    },
+    {
+        "opcode": "SW",
+        "args": [
+            "4",
+            "1"
+        ]
+    },
+    {
+        "opcode": "SUBI",
+        "args": [
+            "4",
+            "4",
+            1
+        ]
+    },
+    {
+        "opcode": "LWI",
+        "args": [
+            "1",
+            0
+        ]
+    },
+    {
+        "opcode": "SW",
+        "args": [
+            "4",
+            "1"
+        ]
+    },
+    {
+        "opcode": "SUBI",
+        "args": [
+            "4",
+            "4",
+            1
+        ]
+    },
+    {
+        "opcode": "LWI",
+        "args": [
+            "1",
+            23
+        ]
+    },
+    {
+        "opcode": "SW",
+        "args": [
+            "4",
+            "1"
+        ]
+    },
+    {
+        "opcode": "SUBI",
+        "args": [
+            "4",
+            "4",
+            1
+        ]
+    },
+    {
+        "opcode": "ADDI",
+        "args": [
+            "4",
+            "4",
+            1
+        ]
+    },
+    {
+        "opcode": "LW",
+        "args": [
+            "2",
+            "4"
+        ]
+    },
+    {
+        "opcode": "ADDI",
+        "args": [
+            "4",
+            "4",
+            1
+        ]
+    },
+    {
+        "opcode": "LW",
+        "args": [
+            "1",
+            "4"
+        ]
+    },
+    {
+        "opcode": "ADD",
+        "args": [
+            "3",
+            "1",
+            "2"
+        ]
+    },
+    {
+        "opcode": "LW",
+        "args": [
+            "1",
+            "3"
+        ]
+    },
+    {
+        "opcode": "SW",
+        "args": [
+            "4",
+            "1"
+        ]
+    },
+    {
+        "opcode": "SUBI",
+        "args": [
+            "4",
+            "4",
+            1
+        ]
+    },
+    {
+        "opcode": "ADDI",
+        "args": [
+            "4",
+            "4",
+            1
+        ]
+    },
+    {
+        "opcode": "LW",
+        "args": [
+            "2",
+            "4"
+        ]
+    },
+    {
+        "opcode": "ADDI",
+        "args": [
+            "4",
+            "4",
+            1
+        ]
+    },
+    {
+        "opcode": "LW",
+        "args": [
+            "1",
+            "4"
+        ]
+    },
+    {
+        "opcode": "DIV",
+        "args": [
+            "3",
+            "1",
+            "2"
+        ]
+    },
+    {
+        "opcode": "SW",
+        "args": [
+            "4",
+            "3"
+        ]
+    },
+    {
+        "opcode": "SUBI",
+        "args": [
+            "4",
+            "4",
+            1
+        ]
+    },
+    {
+        "opcode": "ADDI",
+        "args": [
+            "4",
+            "4",
+            1
+        ]
+    },
+    {
+        "opcode": "LW",
+        "args": [
+            "2",
+            "4"
+        ]
+    },
+    {
+        "opcode": "ADDI",
+        "args": [
+            "4",
+            "4",
+            1
+        ]
+    },
+    {
+        "opcode": "LW",
+        "args": [
+            "1",
+            "4"
+        ]
+    },
+    {
+        "opcode": "SW",
+        "args": [
+            "1",
+            "2"
+        ]
+    },
+    {
+        "opcode": "ADDI",
+        "args": [
+            "1",
+            "0",
+            23
+        ]
+    },
+    {
+        "opcode": "SW",
+        "args": [
+            "4",
+            "1"
+        ]
+    },
+    {
+        "opcode": "SUBI",
+        "args": [
+            "4",
+            "4",
+            1
+        ]
+    },
+    {
+        "opcode": "LWI",
+        "args": [
+            "1",
+            23
+        ]
+    },
+    {
+        "opcode": "SW",
+        "args": [
+            "4",
+            "1"
+        ]
+    },
+    {
+        "opcode": "SUBI",
+        "args": [
+            "4",
+            "4",
+            1
+        ]
+    },
+    {
+        "opcode": "SWI",
+        "args": [
+            "4",
+            1
+        ]
+    },
+    {
+        "opcode": "SUBI",
+        "args": [
+            "4",
+            "4",
+            1
+        ]
+    },
+    {
+        "opcode": "ADDI",
+        "args": [
+            "4",
+            "4",
+            1
+        ]
+    },
+    {
+        "opcode": "LW",
+        "args": [
+            "2",
+            "4"
+        ]
+    },
+    {
+        "opcode": "ADDI",
+        "args": [
+            "4",
+            "4",
+            1
+        ]
+    },
+    {
+        "opcode": "LW",
+        "args": [
+            "1",
+            "4"
+        ]
+    },
+    {
+        "opcode": "ADD",
+        "args": [
+            "3",
+            "1",
+            "2"
+        ]
+    },
+    {
+        "opcode": "SW",
+        "args": [
+            "4",
+            "3"
+        ]
+    },
+    {
+        "opcode": "SUBI",
+        "args": [
+            "4",
+            "4",
+            1
+        ]
+    },
+    {
+        "opcode": "ADDI",
+        "args": [
+            "4",
+            "4",
+            1
+        ]
+    },
+    {
+        "opcode": "LW",
+        "args": [
+            "2",
+            "4"
+        ]
+    },
+    {
+        "opcode": "ADDI",
+        "args": [
+            "4",
+            "4",
+            1
+        ]
+    },
+    {
+        "opcode": "LW",
+        "args": [
+            "1",
+            "4"
+        ]
+    },
+    {
+        "opcode": "SW",
+        "args": [
+            "1",
+            "2"
+        ]
+    },
+    {
+        "opcode": "JMP",
+        "args": [
+            75
+        ]
+    },
+    {
+        "opcode": "LWI",
+        "args": [
+            "1",
+            22
+        ]
+    },
+    {
+        "opcode": "SW",
+        "args": [
+            "4",
+            "1"
+        ]
+    },
+    {
+        "opcode": "SUBI",
+        "args": [
+            "4",
+            "4",
+            1
+        ]
+    },
+    {
+        "opcode": "SWI",
+        "args": [
+            "4",
+            1
+        ]
+    },
+    {
+        "opcode": "SUBI",
+        "args": [
+            "4",
+            "4",
+            1
+        ]
+    },
+    {
+        "opcode": "ADDI",
+        "args": [
+            "4",
+            "4",
+            1
+        ]
+    },
+    {
+        "opcode": "LW",
+        "args": [
+            "2",
+            "4"
+        ]
+    },
+    {
+        "opcode": "ADDI",
+        "args": [
+            "4",
+            "4",
+            1
+        ]
+    },
+    {
+        "opcode": "LW",
+        "args": [
+            "1",
+            "4"
+        ]
+    },
+    {
+        "opcode": "SGT",
+        "args": [
+            "3",
+            "1",
+            "2"
+        ]
+    },
+    {
+        "opcode": "SW",
+        "args": [
+            "4",
+            "3"
+        ]
+    },
+    {
+        "opcode": "SUBI",
+        "args": [
+            "4",
+            "4",
+            1
+        ]
+    },
+    {
+        "opcode": "ADDI",
+        "args": [
+            "4",
+            "4",
+            1
+        ]
+    },
+    {
+        "opcode": "LW",
+        "args": [
+            "1",
+            "4"
+        ]
+    },
+    {
+        "opcode": "BEQ",
+        "args": [
+            "1",
+            "0",
+            236
+        ]
+    },
+    {
+        "opcode": "LWI",
+        "args": [
+            "1",
+            0
+        ]
+    },
+    {
+        "opcode": "SW",
+        "args": [
+            "4",
+            "1"
+        ]
+    },
+    {
+        "opcode": "SUBI",
+        "args": [
+            "4",
+            "4",
+            1
+        ]
+    },
+    {
+        "opcode": "LWI",
+        "args": [
+            "1",
+            23
+        ]
+    },
+    {
+        "opcode": "SW",
+        "args": [
+            "4",
+            "1"
+        ]
+    },
+    {
+        "opcode": "SUBI",
+        "args": [
+            "4",
+            "4",
+            1
+        ]
+    },
+    {
+        "opcode": "ADDI",
+        "args": [
+            "4",
+            "4",
+            1
+        ]
+    },
+    {
+        "opcode": "LW",
+        "args": [
+            "2",
+            "4"
+        ]
+    },
+    {
+        "opcode": "ADDI",
+        "args": [
+            "4",
+            "4",
+            1
+        ]
+    },
+    {
+        "opcode": "LW",
+        "args": [
+            "1",
+            "4"
+        ]
+    },
+    {
+        "opcode": "ADD",
+        "args": [
+            "3",
+            "1",
+            "2"
+        ]
+    },
+    {
+        "opcode": "SW",
+        "args": [
+            "4",
+            "3"
+        ]
+    },
+    {
+        "opcode": "SUBI",
+        "args": [
+            "4",
+            "4",
+            1
+        ]
+    },
+    {
+        "opcode": "LWI",
+        "args": [
+            "1",
+            22
+        ]
+    },
+    {
+        "opcode": "SW",
+        "args": [
+            "4",
+            "1"
+        ]
+    },
+    {
+        "opcode": "SUBI",
+        "args": [
+            "4",
+            "4",
+            1
+        ]
+    },
+    {
+        "opcode": "ADDI",
+        "args": [
+            "4",
+            "4",
+            1
+        ]
+    },
+    {
+        "opcode": "LW",
+        "args": [
+            "2",
+            "4"
+        ]
+    },
+    {
+        "opcode": "ADDI",
+        "args": [
+            "4",
+            "4",
+            1
+        ]
+    },
+    {
+        "opcode": "LW",
+        "args": [
+            "1",
+            "4"
+        ]
+    },
+    {
+        "opcode": "SW",
+        "args": [
+            "1",
+            "2"
+        ]
+    },
+    {
+        "opcode": "ADDI",
+        "args": [
+            "1",
+            "0",
+            21
+        ]
+    },
+    {
+        "opcode": "SW",
+        "args": [
+            "4",
+            "1"
+        ]
+    },
+    {
+        "opcode": "SUBI",
+        "args": [
+            "4",
+            "4",
+            1
+        ]
+    },
+    {
+        "opcode": "LWI",
+        "args": [
+            "1",
+            21
+        ]
+    },
+    {
+        "opcode": "SW",
+        "args": [
+            "4",
+            "1"
+        ]
+    },
+    {
+        "opcode": "SUBI",
+        "args": [
+            "4",
+            "4",
+            1
+        ]
+    },
+    {
+        "opcode": "SWI",
+        "args": [
+            "4",
+            1
+        ]
+    },
+    {
+        "opcode": "SUBI",
+        "args": [
+            "4",
+            "4",
+            1
+        ]
+    },
+    {
+        "opcode": "ADDI",
+        "args": [
+            "4",
+            "4",
+            1
+        ]
+    },
+    {
+        "opcode": "LW",
+        "args": [
+            "2",
+            "4"
+        ]
+    },
+    {
+        "opcode": "ADDI",
+        "args": [
+            "4",
+            "4",
+            1
+        ]
+    },
+    {
+        "opcode": "LW",
+        "args": [
+            "1",
+            "4"
+        ]
+    },
+    {
+        "opcode": "ADD",
+        "args": [
+            "3",
+            "1",
+            "2"
+        ]
+    },
+    {
+        "opcode": "SW",
+        "args": [
+            "4",
+            "3"
+        ]
+    },
+    {
+        "opcode": "SUBI",
+        "args": [
+            "4",
+            "4",
+            1
+        ]
+    },
+    {
+        "opcode": "ADDI",
+        "args": [
+            "4",
+            "4",
+            1
+        ]
+    },
+    {
+        "opcode": "LW",
+        "args": [
+            "2",
+            "4"
+        ]
+    },
+    {
+        "opcode": "ADDI",
+        "args": [
+            "4",
+            "4",
+            1
+        ]
+    },
+    {
+        "opcode": "LW",
+        "args": [
+            "1",
+            "4"
+        ]
+    },
+    {
+        "opcode": "SW",
+        "args": [
+            "1",
+            "2"
+        ]
+    },
+    {
+        "opcode": "JMP",
+        "args": [
+            39
+        ]
+    },
+    {
+        "opcode": "ADDI",
+        "args": [
+            "1",
+            "0",
+            23
+        ]
+    },
+    {
+        "opcode": "SW",
+        "args": [
+            "4",
+            "1"
+        ]
+    },
+    {
+        "opcode": "SUBI",
+        "args": [
+            "4",
+            "4",
+            1
+        ]
+    },
+    {
+        "opcode": "SWI",
+        "args": [
+            "4",
+            0
+        ]
+    },
+    {
+        "opcode": "SUBI",
+        "args": [
+            "4",
+            "4",
+            1
+        ]
+    },
+    {
+        "opcode": "ADDI",
+        "args": [
+            "4",
+            "4",
+            1
+        ]
+    },
+    {
+        "opcode": "LW",
+        "args": [
+            "2",
+            "4"
+        ]
+    },
+    {
+        "opcode": "ADDI",
+        "args": [
+            "4",
+            "4",
+            1
+        ]
+    },
+    {
+        "opcode": "LW",
+        "args": [
+            "1",
+            "4"
+        ]
+    },
+    {
+        "opcode": "SW",
+        "args": [
+            "1",
+            "2"
+        ]
+    },
+    {
+        "opcode": "LWI",
+        "args": [
+            "1",
+            0
+        ]
+    },
+    {
+        "opcode": "SW",
+        "args": [
+            "4",
+            "1"
+        ]
+    },
+    {
+        "opcode": "SUBI",
+        "args": [
+            "4",
+            "4",
+            1
+        ]
+    },
+    {
+        "opcode": "LWI",
+        "args": [
+            "1",
+            23
+        ]
+    },
+    {
+        "opcode": "SW",
+        "args": [
+            "4",
+            "1"
+        ]
+    },
+    {
+        "opcode": "SUBI",
+        "args": [
+            "4",
+            "4",
+            1
+        ]
+    },
+    {
+        "opcode": "ADDI",
+        "args": [
+            "4",
+            "4",
+            1
+        ]
+    },
+    {
+        "opcode": "LW",
+        "args": [
+            "2",
+            "4"
+        ]
+    },
+    {
+        "opcode": "ADDI",
+        "args": [
+            "4",
+            "4",
+            1
+        ]
+    },
+    {
+        "opcode": "LW",
+        "args": [
+            "1",
+            "4"
+        ]
+    },
+    {
+        "opcode": "ADD",
+        "args": [
+            "3",
+            "1",
+            "2"
+        ]
+    },
+    {
+        "opcode": "LW",
+        "args": [
+            "1",
+            "3"
+        ]
+    },
+    {
+        "opcode": "SW",
+        "args": [
+            "4",
+            "1"
+        ]
+    },
+    {
+        "opcode": "SUBI",
+        "args": [
+            "4",
+            "4",
+            1
+        ]
+    },
+    {
+        "opcode": "ADDI",
+        "args": [
+            "4",
+            "4",
+            1
+        ]
+    },
+    {
+        "opcode": "LW",
+        "args": [
+            "1",
+            "4"
+        ]
+    },
+    {
+        "opcode": "BEQ",
+        "args": [
+            "1",
+            "0",
+            337
+        ]
+    },
+    {
+        "opcode": "ADDI",
+        "args": [
+            "1",
+            "0",
+            24
+        ]
+    },
+    {
+        "opcode": "SW",
+        "args": [
+            "4",
+            "1"
+        ]
+    },
+    {
+        "opcode": "SUBI",
+        "args": [
+            "4",
+            "4",
+            1
+        ]
+    },
+    {
+        "opcode": "LWI",
+        "args": [
+            "1",
+            24
+        ]
+    },
+    {
+        "opcode": "SW",
+        "args": [
+            "4",
+            "1"
+        ]
+    },
+    {
+        "opcode": "SUBI",
+        "args": [
+            "4",
+            "4",
+            1
+        ]
+    },
+    {
+        "opcode": "LWI",
+        "args": [
+            "1",
+            0
+        ]
+    },
+    {
+        "opcode": "SW",
+        "args": [
+            "4",
+            "1"
+        ]
+    },
+    {
+        "opcode": "SUBI",
+        "args": [
+            "4",
+            "4",
+            1
+        ]
+    },
+    {
+        "opcode": "LWI",
+        "args": [
+            "1",
+            23
+        ]
+    },
+    {
+        "opcode": "SW",
+        "args": [
+            "4",
+            "1"
+        ]
+    },
+    {
+        "opcode": "SUBI",
+        "args": [
+            "4",
+            "4",
+            1
+        ]
+    },
+    {
+        "opcode": "ADDI",
+        "args": [
+            "4",
+            "4",
+            1
+        ]
+    },
+    {
+        "opcode": "LW",
+        "args": [
+            "2",
+            "4"
+        ]
+    },
+    {
+        "opcode": "ADDI",
+        "args": [
+            "4",
+            "4",
+            1
+        ]
+    },
+    {
+        "opcode": "LW",
+        "args": [
+            "1",
+            "4"
+        ]
+    },
+    {
+        "opcode": "ADD",
+        "args": [
+            "3",
+            "1",
+            "2"
+        ]
+    },
+    {
+        "opcode": "LW",
+        "args": [
+            "1",
+            "3"
+        ]
+    },
+    {
+        "opcode": "SW",
+        "args": [
+            "4",
+            "1"
+        ]
+    },
+    {
+        "opcode": "SUBI",
+        "args": [
+            "4",
+            "4",
+            1
+        ]
+    },
+    {
+        "opcode": "ADDI",
+        "args": [
+            "4",
+            "4",
+            1
+        ]
+    },
+    {
+        "opcode": "LW",
+        "args": [
+            "2",
+            "4"
+        ]
+    },
+    {
+        "opcode": "ADDI",
+        "args": [
+            "4",
+            "4",
+            1
+        ]
+    },
+    {
+        "opcode": "LW",
+        "args": [
+            "1",
+            "4"
+        ]
+    },
+    {
+        "opcode": "MUL",
+        "args": [
+            "3",
+            "1",
+            "2"
+        ]
+    },
+    {
+        "opcode": "SW",
+        "args": [
+            "4",
+            "3"
+        ]
+    },
+    {
+        "opcode": "SUBI",
+        "args": [
+            "4",
+            "4",
+            1
+        ]
+    },
+    {
+        "opcode": "ADDI",
+        "args": [
+            "4",
+            "4",
+            1
+        ]
+    },
+    {
+        "opcode": "LW",
+        "args": [
+            "2",
+            "4"
+        ]
+    },
+    {
+        "opcode": "ADDI",
+        "args": [
+            "4",
+            "4",
+            1
+        ]
+    },
+    {
+        "opcode": "LW",
+        "args": [
+            "1",
+            "4"
+        ]
+    },
+    {
+        "opcode": "SW",
+        "args": [
+            "1",
+            "2"
+        ]
+    },
+    {
+        "opcode": "ADDI",
+        "args": [
+            "1",
+            "0",
+            23
+        ]
+    },
+    {
+        "opcode": "SW",
+        "args": [
+            "4",
+            "1"
+        ]
+    },
+    {
+        "opcode": "SUBI",
+        "args": [
+            "4",
+            "4",
+            1
+        ]
+    },
+    {
+        "opcode": "LWI",
+        "args": [
+            "1",
+            23
+        ]
+    },
+    {
+        "opcode": "SW",
+        "args": [
+            "4",
+            "1"
+        ]
+    },
+    {
+        "opcode": "SUBI",
+        "args": [
+            "4",
+            "4",
+            1
+        ]
+    },
+    {
+        "opcode": "SWI",
+        "args": [
+            "4",
+            1
+        ]
+    },
+    {
+        "opcode": "SUBI",
+        "args": [
+            "4",
+            "4",
+            1
+        ]
+    },
+    {
+        "opcode": "ADDI",
+        "args": [
+            "4",
+            "4",
+            1
+        ]
+    },
+    {
+        "opcode": "LW",
+        "args": [
+            "2",
+            "4"
+        ]
+    },
+    {
+        "opcode": "ADDI",
+        "args": [
+            "4",
+            "4",
+            1
+        ]
+    },
+    {
+        "opcode": "LW",
+        "args": [
+            "1",
+            "4"
+        ]
+    },
+    {
+        "opcode": "ADD",
+        "args": [
+            "3",
+            "1",
+            "2"
+        ]
+    },
+    {
+        "opcode": "SW",
+        "args": [
+            "4",
+            "3"
+        ]
+    },
+    {
+        "opcode": "SUBI",
+        "args": [
+            "4",
+            "4",
+            1
+        ]
+    },
+    {
+        "opcode": "ADDI",
+        "args": [
+            "4",
+            "4",
+            1
+        ]
+    },
+    {
+        "opcode": "LW",
+        "args": [
+            "2",
+            "4"
+        ]
+    },
+    {
+        "opcode": "ADDI",
+        "args": [
+            "4",
+            "4",
+            1
+        ]
+    },
+    {
+        "opcode": "LW",
+        "args": [
+            "1",
+            "4"
+        ]
+    },
+    {
+        "opcode": "SW",
+        "args": [
+            "1",
+            "2"
+        ]
+    },
+    {
+        "opcode": "JMP",
+        "args": [
+            267
+        ]
+    },
+    {
+        "opcode": "ADDI",
+        "args": [
+            "1",
+            "0",
+            22
+        ]
+    },
+    {
+        "opcode": "SW",
+        "args": [
+            "4",
+            "1"
+        ]
+    },
+    {
+        "opcode": "SUBI",
+        "args": [
+            "4",
+            "4",
+            1
+        ]
+    },
+    {
+        "opcode": "LWI",
+        "args": [
+            "1",
+            24
+        ]
+    },
+    {
+        "opcode": "SW",
+        "args": [
+            "4",
+            "1"
+        ]
+    },
+    {
+        "opcode": "SUBI",
+        "args": [
+            "4",
+            "4",
+            1
+        ]
+    },
+    {
+        "opcode": "ADDI",
+        "args": [
+            "4",
+            "4",
+            1
+        ]
+    },
+    {
+        "opcode": "LW",
+        "args": [
+            "2",
+            "4"
+        ]
+    },
+    {
+        "opcode": "ADDI",
+        "args": [
+            "4",
+            "4",
+            1
+        ]
+    },
+    {
+        "opcode": "LW",
+        "args": [
+            "1",
+            "4"
+        ]
+    },
+    {
+        "opcode": "SW",
+        "args": [
+            "1",
+            "2"
+        ]
+    },
+    {
+        "opcode": "LWI",
+        "args": [
+            "1",
+            22
+        ]
+    },
+    {
+        "opcode": "SW",
+        "args": [
+            "4",
+            "1"
+        ]
+    },
+    {
+        "opcode": "SUBI",
+        "args": [
+            "4",
+            "4",
+            1
+        ]
+    },
+    {
+        "opcode": "SWI",
+        "args": [
+            "4",
+            0
+        ]
+    },
+    {
+        "opcode": "SUBI",
+        "args": [
+            "4",
+            "4",
+            1
+        ]
+    },
+    {
+        "opcode": "ADDI",
+        "args": [
+            "4",
+            "4",
+            1
+        ]
+    },
+    {
+        "opcode": "LW",
+        "args": [
+            "2",
+            "4"
+        ]
+    },
+    {
+        "opcode": "ADDI",
+        "args": [
+            "4",
+            "4",
+            1
+        ]
+    },
+    {
+        "opcode": "LW",
+        "args": [
+            "1",
+            "4"
+        ]
+    },
+    {
+        "opcode": "SGT",
+        "args": [
+            "3",
+            "1",
+            "2"
+        ]
+    },
+    {
+        "opcode": "SW",
+        "args": [
+            "4",
+            "3"
+        ]
+    },
+    {
+        "opcode": "SUBI",
+        "args": [
+            "4",
+            "4",
+            1
+        ]
+    },
+    {
+        "opcode": "ADDI",
+        "args": [
+            "4",
+            "4",
+            1
+        ]
+    },
+    {
+        "opcode": "LW",
+        "args": [
+            "1",
+            "4"
+        ]
+    },
+    {
+        "opcode": "BEQ",
+        "args": [
+            "1",
+            "0",
+            434
+        ]
+    },
+    {
+        "opcode": "LWI",
+        "args": [
+            "1",
+            25
+        ]
+    },
+    {
+        "opcode": "SW",
+        "args": [
+            "4",
+            "1"
+        ]
+    },
+    {
+        "opcode": "SUBI",
+        "args": [
+            "4",
+            "4",
+            1
+        ]
+    },
+    {
+        "opcode": "LWI",
+        "args": [
+            "1",
+            38
+        ]
+    },
+    {
+        "opcode": "SW",
+        "args": [
+            "4",
+            "1"
+        ]
+    },
+    {
+        "opcode": "SUBI",
+        "args": [
+            "4",
+            "4",
+            1
+        ]
+    },
+    {
+        "opcode": "ADDI",
+        "args": [
+            "4",
+            "4",
+            1
+        ]
+    },
+    {
+        "opcode": "LW",
+        "args": [
+            "2",
+            "4"
+        ]
+    },
+    {
+        "opcode": "ADDI",
+        "args": [
+            "4",
+            "4",
+            1
+        ]
+    },
+    {
+        "opcode": "LW",
+        "args": [
+            "1",
+            "4"
+        ]
+    },
+    {
+        "opcode": "ADD",
+        "args": [
+            "3",
+            "1",
+            "2"
+        ]
+    },
+    {
+        "opcode": "SW",
+        "args": [
+            "4",
+            "3"
+        ]
+    },
+    {
+        "opcode": "SUBI",
+        "args": [
+            "4",
+            "4",
+            1
+        ]
+    },
+    {
+        "opcode": "LWI",
+        "args": [
+            "1",
+            22
+        ]
+    },
+    {
+        "opcode": "SW",
+        "args": [
+            "4",
+            "1"
+        ]
+    },
+    {
+        "opcode": "SUBI",
+        "args": [
+            "4",
+            "4",
+            1
+        ]
+    },
+    {
+        "opcode": "SWI",
+        "args": [
+            "4",
+            10
+        ]
+    },
+    {
+        "opcode": "SUBI",
+        "args": [
+            "4",
+            "4",
+            1
+        ]
+    },
+    {
+        "opcode": "ADDI",
+        "args": [
+            "4",
+            "4",
+            1
+        ]
+    },
+    {
+        "opcode": "LW",
+        "args": [
+            "2",
+            "4"
+        ]
+    },
+    {
+        "opcode": "ADDI",
+        "args": [
+            "4",
+            "4",
+            1
+        ]
+    },
+    {
+        "opcode": "LW",
+        "args": [
+            "1",
+            "4"
+        ]
+    },
+    {
+        "opcode": "REM",
+        "args": [
+            "3",
+            "1",
+            "2"
+        ]
+    },
+    {
+        "opcode": "SW",
+        "args": [
+            "4",
+            "3"
+        ]
+    },
+    {
+        "opcode": "SUBI",
+        "args": [
+            "4",
+            "4",
+            1
+        ]
+    },
+    {
+        "opcode": "ADDI",
+        "args": [
+            "4",
+            "4",
+            1
+        ]
+    },
+    {
+        "opcode": "LW",
+        "args": [
+            "2",
+            "4"
+        ]
+    },
+    {
+        "opcode": "ADDI",
+        "args": [
+            "4",
+            "4",
+            1
+        ]
+    },
+    {
+        "opcode": "LW",
+        "args": [
+            "1",
+            "4"
+        ]
+    },
+    {
+        "opcode": "SW",
+        "args": [
+            "1",
+            "2"
+        ]
+    },
+    {
+        "opcode": "ADDI",
+        "args": [
+            "1",
+            "0",
+            22
+        ]
+    },
+    {
+        "opcode": "SW",
+        "args": [
+            "4",
+            "1"
+        ]
+    },
+    {
+        "opcode": "SUBI",
+        "args": [
+            "4",
+            "4",
+            1
+        ]
+    },
+    {
+        "opcode": "LWI",
+        "args": [
+            "1",
+            22
+        ]
+    },
+    {
+        "opcode": "SW",
+        "args": [
+            "4",
+            "1"
+        ]
+    },
+    {
+        "opcode": "SUBI",
+        "args": [
+            "4",
+            "4",
+            1
+        ]
+    },
+    {
+        "opcode": "SWI",
+        "args": [
+            "4",
+            10
+        ]
+    },
+    {
+        "opcode": "SUBI",
+        "args": [
+            "4",
+            "4",
+            1
+        ]
+    },
+    {
+        "opcode": "ADDI",
+        "args": [
+            "4",
+            "4",
+            1
+        ]
+    },
+    {
+        "opcode": "LW",
+        "args": [
+            "2",
+            "4"
+        ]
+    },
+    {
+        "opcode": "ADDI",
+        "args": [
+            "4",
+            "4",
+            1
+        ]
+    },
+    {
+        "opcode": "LW",
+        "args": [
+            "1",
+            "4"
+        ]
+    },
+    {
+        "opcode": "DIV",
+        "args": [
+            "3",
+            "1",
+            "2"
+        ]
+    },
+    {
+        "opcode": "SW",
+        "args": [
+            "4",
+            "3"
+        ]
+    },
+    {
+        "opcode": "SUBI",
+        "args": [
+            "4",
+            "4",
+            1
+        ]
+    },
+    {
+        "opcode": "ADDI",
+        "args": [
+            "4",
+            "4",
+            1
+        ]
+    },
+    {
+        "opcode": "LW",
+        "args": [
+            "2",
+            "4"
+        ]
+    },
+    {
+        "opcode": "ADDI",
+        "args": [
+            "4",
+            "4",
+            1
+        ]
+    },
+    {
+        "opcode": "LW",
+        "args": [
+            "1",
+            "4"
+        ]
+    },
+    {
+        "opcode": "SW",
+        "args": [
+            "1",
+            "2"
+        ]
+    },
+    {
+        "opcode": "ADDI",
+        "args": [
+            "1",
+            "0",
+            38
+        ]
+    },
+    {
+        "opcode": "SW",
+        "args": [
+            "4",
+            "1"
+        ]
+    },
+    {
+        "opcode": "SUBI",
+        "args": [
+            "4",
+            "4",
+            1
+        ]
+    },
+    {
+        "opcode": "LWI",
+        "args": [
+            "1",
+            38
+        ]
+    },
+    {
+        "opcode": "SW",
+        "args": [
+            "4",
+            "1"
+        ]
+    },
+    {
+        "opcode": "SUBI",
+        "args": [
+            "4",
+            "4",
+            1
+        ]
+    },
+    {
+        "opcode": "SWI",
+        "args": [
+            "4",
+            1
+        ]
+    },
+    {
+        "opcode": "SUBI",
+        "args": [
+            "4",
+            "4",
+            1
+        ]
+    },
+    {
+        "opcode": "ADDI",
+        "args": [
+            "4",
+            "4",
+            1
+        ]
+    },
+    {
+        "opcode": "LW",
+        "args": [
+            "2",
+            "4"
+        ]
+    },
+    {
+        "opcode": "ADDI",
+        "args": [
+            "4",
+            "4",
+            1
+        ]
+    },
+    {
+        "opcode": "LW",
+        "args": [
+            "1",
+            "4"
+        ]
+    },
+    {
+        "opcode": "ADD",
+        "args": [
+            "3",
+            "1",
+            "2"
+        ]
+    },
+    {
+        "opcode": "SW",
+        "args": [
+            "4",
+            "3"
+        ]
+    },
+    {
+        "opcode": "SUBI",
+        "args": [
+            "4",
+            "4",
+            1
+        ]
+    },
+    {
+        "opcode": "ADDI",
+        "args": [
+            "4",
+            "4",
+            1
+        ]
+    },
+    {
+        "opcode": "LW",
+        "args": [
+            "2",
+            "4"
+        ]
+    },
+    {
+        "opcode": "ADDI",
+        "args": [
+            "4",
+            "4",
+            1
+        ]
+    },
+    {
+        "opcode": "LW",
+        "args": [
+            "1",
+            "4"
+        ]
+    },
+    {
+        "opcode": "SW",
+        "args": [
+            "1",
+            "2"
+        ]
+    },
+    {
+        "opcode": "JMP",
+        "args": [
+            348
+        ]
+    },
+    {
+        "opcode": "ADDI",
+        "args": [
+            "1",
+            "0",
+            38
+        ]
+    },
+    {
+        "opcode": "SW",
+        "args": [
+            "4",
+            "1"
+        ]
+    },
+    {
+        "opcode": "SUBI",
+        "args": [
+            "4",
+            "4",
+            1
+        ]
+    },
+    {
+        "opcode": "LWI",
+        "args": [
+            "1",
+            38
+        ]
+    },
+    {
+        "opcode": "SW",
+        "args": [
+            "4",
+            "1"
+        ]
+    },
+    {
+        "opcode": "SUBI",
+        "args": [
+            "4",
+            "4",
+            1
+        ]
+    },
+    {
+        "opcode": "SWI",
+        "args": [
+            "4",
+            1
+        ]
+    },
+    {
+        "opcode": "SUBI",
+        "args": [
+            "4",
+            "4",
+            1
+        ]
+    },
+    {
+        "opcode": "ADDI",
+        "args": [
+            "4",
+            "4",
+            1
+        ]
+    },
+    {
+        "opcode": "LW",
+        "args": [
+            "2",
+            "4"
+        ]
+    },
+    {
+        "opcode": "ADDI",
+        "args": [
+            "4",
+            "4",
+            1
+        ]
+    },
+    {
+        "opcode": "LW",
+        "args": [
+            "1",
+            "4"
+        ]
+    },
+    {
+        "opcode": "SUB",
+        "args": [
+            "3",
+            "1",
+            "2"
+        ]
+    },
+    {
+        "opcode": "SW",
+        "args": [
+            "4",
+            "3"
+        ]
+    },
+    {
+        "opcode": "SUBI",
+        "args": [
+            "4",
+            "4",
+            1
+        ]
+    },
+    {
+        "opcode": "ADDI",
+        "args": [
+            "4",
+            "4",
+            1
+        ]
+    },
+    {
+        "opcode": "LW",
+        "args": [
+            "2",
+            "4"
+        ]
+    },
+    {
+        "opcode": "ADDI",
+        "args": [
+            "4",
+            "4",
+            1
+        ]
+    },
+    {
+        "opcode": "LW",
+        "args": [
+            "1",
+            "4"
+        ]
+    },
+    {
+        "opcode": "SW",
+        "args": [
+            "1",
+            "2"
+        ]
+    },
+    {
+        "opcode": "LWI",
+        "args": [
+            "1",
+            38
+        ]
+    },
+    {
+        "opcode": "SW",
+        "args": [
+            "4",
+            "1"
+        ]
+    },
+    {
+        "opcode": "SUBI",
+        "args": [
+            "4",
+            "4",
+            1
+        ]
+    },
+    {
+        "opcode": "SWI",
+        "args": [
+            "4",
+            0
+        ]
+    },
+    {
+        "opcode": "SUBI",
+        "args": [
+            "4",
+            "4",
+            1
+        ]
+    },
+    {
+        "opcode": "ADDI",
+        "args": [
+            "4",
+            "4",
+            1
+        ]
+    },
+    {
+        "opcode": "LW",
+        "args": [
+            "2",
+            "4"
+        ]
+    },
+    {
+        "opcode": "ADDI",
+        "args": [
+            "4",
+            "4",
+            1
+        ]
+    },
+    {
+        "opcode": "LW",
+        "args": [
+            "1",
+            "4"
+        ]
+    },
+    {
+        "opcode": "SNL",
+        "args": [
+            "3",
+            "1",
+            "2"
+        ]
+    },
+    {
+        "opcode": "SW",
+        "args": [
+            "4",
+            "3"
+        ]
+    },
+    {
+        "opcode": "SUBI",
+        "args": [
+            "4",
+            "4",
+            1
+        ]
+    },
+    {
+        "opcode": "ADDI",
+        "args": [
+            "4",
+            "4",
+            1
+        ]
+    },
+    {
+        "opcode": "LW",
+        "args": [
+            "1",
+            "4"
+        ]
+    },
+    {
+        "opcode": "BEQ",
+        "args": [
+            "1",
+            "0",
+            520
+        ]
+    },
+    {
+        "opcode": "ADDI",
+        "args": [
+            "1",
+            "0",
+            22
+        ]
+    },
+    {
+        "opcode": "SW",
+        "args": [
+            "4",
+            "1"
+        ]
+    },
+    {
+        "opcode": "SUBI",
+        "args": [
+            "4",
+            "4",
+            1
+        ]
+    },
+    {
+        "opcode": "LWI",
+        "args": [
+            "1",
+            25
+        ]
+    },
+    {
+        "opcode": "SW",
+        "args": [
+            "4",
+            "1"
+        ]
+    },
+    {
+        "opcode": "SUBI",
+        "args": [
+            "4",
+            "4",
+            1
+        ]
+    },
+    {
+        "opcode": "LWI",
+        "args": [
+            "1",
+            38
+        ]
+    },
+    {
+        "opcode": "SW",
+        "args": [
+            "4",
+            "1"
+        ]
+    },
+    {
+        "opcode": "SUBI",
+        "args": [
+            "4",
+            "4",
+            1
+        ]
+    },
+    {
+        "opcode": "ADDI",
+        "args": [
+            "4",
+            "4",
+            1
+        ]
+    },
+    {
+        "opcode": "LW",
+        "args": [
+            "2",
+            "4"
+        ]
+    },
+    {
+        "opcode": "ADDI",
+        "args": [
+            "4",
+            "4",
+            1
+        ]
+    },
+    {
+        "opcode": "LW",
+        "args": [
+            "1",
+            "4"
+        ]
+    },
+    {
+        "opcode": "ADD",
+        "args": [
+            "3",
+            "1",
+            "2"
+        ]
+    },
+    {
+        "opcode": "LW",
+        "args": [
+            "1",
+            "3"
+        ]
+    },
+    {
+        "opcode": "SW",
+        "args": [
+            "4",
+            "1"
+        ]
+    },
+    {
+        "opcode": "SUBI",
+        "args": [
+            "4",
+            "4",
+            1
+        ]
+    },
+    {
+        "opcode": "ADDI",
+        "args": [
+            "4",
+            "4",
+            1
+        ]
+    },
+    {
+        "opcode": "LW",
+        "args": [
+            "2",
+            "4"
+        ]
+    },
+    {
+        "opcode": "ADDI",
+        "args": [
+            "4",
+            "4",
+            1
+        ]
+    },
+    {
+        "opcode": "LW",
+        "args": [
+            "1",
+            "4"
+        ]
+    },
+    {
+        "opcode": "SW",
+        "args": [
+            "1",
+            "2"
+        ]
+    },
+    {
+        "opcode": "LWI",
+        "args": [
+            "1",
+            22
+        ]
+    },
+    {
+        "opcode": "SW",
+        "args": [
+            "4",
+            "1"
+        ]
+    },
+    {
+        "opcode": "SUBI",
+        "args": [
+            "4",
+            "4",
+            1
+        ]
+    },
+    {
+        "opcode": "ADDI",
+        "args": [
+            "4",
+            "4",
+            1
+        ]
+    },
+    {
+        "opcode": "LW",
+        "args": [
+            "1",
+            "4"
+        ]
+    },
+    {
+        "opcode": "ADDI",
+        "args": [
+            "2",
+            "0",
+            9696
+        ]
+    },
+    {
+        "opcode": "ADDI",
+        "args": [
+            "1",
+            "1",
+            48
+        ]
+    },
+    {
+        "opcode": "SW",
+        "args": [
+            "2",
+            "1"
+        ]
+    },
+    {
+        "opcode": "ADDI",
+        "args": [
+            "1",
+            "0",
+            38
+        ]
+    },
+    {
+        "opcode": "SW",
+        "args": [
+            "4",
+            "1"
+        ]
+    },
+    {
+        "opcode": "SUBI",
+        "args": [
+            "4",
+            "4",
+            1
+        ]
+    },
+    {
+        "opcode": "LWI",
+        "args": [
+            "1",
+            38
+        ]
+    },
+    {
+        "opcode": "SW",
+        "args": [
+            "4",
+            "1"
+        ]
+    },
+    {
+        "opcode": "SUBI",
+        "args": [
+            "4",
+            "4",
+            1
+        ]
+    },
+    {
+        "opcode": "SWI",
+        "args": [
+            "4",
+            1
+        ]
+    },
+    {
+        "opcode": "SUBI",
+        "args": [
+            "4",
+            "4",
+            1
+        ]
+    },
+    {
+        "opcode": "ADDI",
+        "args": [
+            "4",
+            "4",
+            1
+        ]
+    },
+    {
+        "opcode": "LW",
+        "args": [
+            "2",
+            "4"
+        ]
+    },
+    {
+        "opcode": "ADDI",
+        "args": [
+            "4",
+            "4",
+            1
+        ]
+    },
+    {
+        "opcode": "LW",
+        "args": [
+            "1",
+            "4"
+        ]
+    },
+    {
+        "opcode": "SUB",
+        "args": [
+            "3",
+            "1",
+            "2"
+        ]
+    },
+    {
+        "opcode": "SW",
+        "args": [
+            "4",
+            "3"
+        ]
+    },
+    {
+        "opcode": "SUBI",
+        "args": [
+            "4",
+            "4",
+            1
+        ]
+    },
+    {
+        "opcode": "ADDI",
+        "args": [
+            "4",
+            "4",
+            1
+        ]
+    },
+    {
+        "opcode": "LW",
+        "args": [
+            "2",
+            "4"
+        ]
+    },
+    {
+        "opcode": "ADDI",
+        "args": [
+            "4",
+            "4",
+            1
+        ]
+    },
+    {
+        "opcode": "LW",
+        "args": [
+            "1",
+            "4"
+        ]
+    },
+    {
+        "opcode": "SW",
+        "args": [
+            "1",
+            "2"
+        ]
+    },
+    {
+        "opcode": "JMP",
+        "args": [
+            454
+        ]
+    },
+    {
+        "opcode": "HALT",
+        "args": []
+    }
+]
