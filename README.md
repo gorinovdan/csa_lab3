@@ -246,7 +246,7 @@ i - number of instructions
 
 ## Тестирование
 
-1. [hello world](./golden/hello_world.yml) - выводит `Hello, world!` в stdin.
+1. [hello world](./golden/hello.yml) - выводит `Hello, world!` в stdin.
 2. [cat](./golden/cat.yml) - программа `cat`, повторяем ввод на выводе.
 3. [hello_user_name](./golden/hello_user_name.yml) - чтение имени из файла и вывод приветствия
 4. [prob5](./golden/prob5.yml) - problem 5
@@ -256,17 +256,55 @@ Golden тесты реализованы тут: [integration_test](./integratio
 CI:
 
 ``` yaml
-lab3:
-  stage: test
-  image:
-    name: python-tools
-    entrypoint: [""]
-  script:
-    - python3-coverage run -m pytest --verbose
-    - find . -type f -name "*.py" | xargs -t python3-coverage report
-    - find . -type f -name "*.py" | xargs -t pycodestyle --ignore=E501,W291
-    - find . -type f -name "*.py" | xargs -t pylint
+name: CI
 
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+permissions:
+  contents: read
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+    - name: Install poetry
+      run: pip install poetry
+    - name: Set up Python 3.12
+      uses: actions/setup-python@v4
+      with:
+        python-version: "3.12"
+        cache: "poetry"
+    - name: Install project
+      run: |
+        poetry install
+    - name: Lint with ruff
+      run: |
+        poetry run python -m ruff interpreter
+        poetry run python -m ruff machine
+  test:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    - name: Install poetry
+      run: pip install poetry
+    - name: Set up Python 3.12
+      uses: actions/setup-python@v4
+      with:
+        python-version: "3.12"
+        cache: "poetry"
+    - name: Install project
+      run: |
+        poetry install
+    - name: Run tests
+      run: |
+        poetry run pytest . -v --update-goldens
+    needs: lint
 ```
 
 где:
