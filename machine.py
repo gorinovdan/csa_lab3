@@ -4,17 +4,16 @@
 # pylint: disable=invalid-name
 # pylint: disable=too-many-instance-attributes
 
-from enum import Enum
 import logging
-from collections import deque
 import sys
-from typing import Callable
+from collections import deque
+from enum import Enum
+from typing import Callable, Deque
 
-from isa import Register, decode_opcode, read_bin_code, format_instr, \
-    Opcode, Immediate, Instruction, STDIN, STDOUT
+from isa import STDIN, STDOUT, Immediate, Instruction, Opcode, Register, decode_opcode, format_instr, read_bin_code
 
 
-class DataPath():
+class DataPath:
     memory: list[int]
     program_counter: int
     data_address: int
@@ -38,7 +37,7 @@ class DataPath():
         self.rs1 = 0
         self.rs2 = 0
         self.input_buffer = deque([ord(token) for token in input_buffer] + [0])
-        self.output_buffer = deque()
+        self.output_buffer: Deque = deque()
         self.a, self.b = 0, 0
         self.computed = 0
 
@@ -160,7 +159,7 @@ class InstructionStage(Enum):
     WRITE_BACK = 4
 
 
-class ControlUnit():
+class ControlUnit:
     data_path: DataPath
     stage: InstructionStage
     opcode: Opcode
@@ -195,7 +194,7 @@ class ControlUnit():
 
     def tick(self):
         """Счётчик тактов процессора. Вызывается при переходе на следующий такт."""
-        logging.debug('TICK: %d', self.current_tick())
+        logging.debug("TICK: %d", self.current_tick())
         self._tick_ += 1
 
     def fetch_instruction(self):
@@ -359,7 +358,7 @@ def simulation(data: list[int], code: list[int], input_tokens, limit):
             tick_counter += 1
 
     except EOFError:
-        logging.warning('Input buffer is empty!')
+        logging.warning("Input buffer is empty!")
     except StopIteration:
         pass
 
@@ -367,7 +366,7 @@ def simulation(data: list[int], code: list[int], input_tokens, limit):
         dmem = show_data_memory(data_path.dmem)
         logging.info("%s", f"Data memory map is\n{dmem}")
 
-    return ''.join(data_path.output_buffer), tick_counter // 5, \
+    return "".join(data_path.output_buffer), tick_counter // 5, \
         control_unit.current_tick()
 
 
@@ -391,6 +390,6 @@ def main(args):
     print(f"instr_counter: {instr_counter} ticks: {ticks}")
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     logging.getLogger().setLevel(logging.INFO)
     main(sys.argv[1:])

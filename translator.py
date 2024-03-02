@@ -2,13 +2,13 @@
 # pylint: disable=missing-function-docstring
 # pylint: disable=missing-class-docstring
 # pylint: disable=missing-module-docstring
-import json
 import re
 import sys
 from collections import deque
-from typing import Any, Callable, NamedTuple
+from typing import Any, Callable, Deque, Dict, NamedTuple, Set
+
+from isa import STDIN, STDOUT, write_bin_code, write_json_code
 from isa import Opcode as Opcode
-from isa import write_bin_code, write_json_code, STDIN, STDOUT
 
 
 def preprocess(raw: str) -> str:
@@ -64,7 +64,7 @@ breakers = set().union(operators) \
     .union(curly_braces).union(keychars)
 breakers.add(";")
 
-breakers_by_length = {0: set()}
+breakers_by_length: Dict[int, Set[str]] = {0: set()}
 
 
 def get_breaker_by_length(breaker_length):
@@ -138,8 +138,8 @@ class ASTParserUnit:
     """
 
     def __init__(self) -> None:
-        self.terms = deque()
-        self.nesting_level = deque()
+        self.terms: Deque = deque()
+        self.nesting_level: Deque = deque()
 
     def getCurrentTerm(self) -> deque:
         max_level = len(self.nesting_level)
@@ -272,15 +272,14 @@ class Translator:
     FISH = "undefined_address"
 
     def __init__(self) -> None:
-        self.program = deque()
-
-        self.vars = {}
-        self.memory = deque()
+        self.program: Deque = deque()
+        self.vars: Dict[str, Any] = {}
+        self.memory: Deque = deque()
         self.data_address = 0
         [self.X0, self.X1, self.X2, self.X3, self.SP] = ["0", "1", "2", "3", "4"]
         self.op = {}
         self.pc = 0
-        self.unresolved_addresses = deque()
+        self.unresolved_addresses: Deque = deque()
         for opcode in list(Opcode):
             # print(opcode.name)
             self.op[opcode.name] = self.generate_commands(opcode.name)
@@ -437,7 +436,7 @@ class Translator:
 
             for _term_ in body:
                 if _term_ != "&":
-                    if _term_ and isinstance(_term_[0], list) and _term_[0][0] == 'if':
+                    if _term_ and isinstance(_term_[0], list) and _term_[0][0] == "if":
                         _term_ = _term_[0]
                     self._translate_(_term_)
 

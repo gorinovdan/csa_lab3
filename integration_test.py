@@ -4,12 +4,12 @@ import logging
 import os
 import tempfile
 
+import machine
 import pytest
 import translator
-import machine
 
 
-@pytest.mark.golden_test("golden\*.yml")
+@pytest.mark.golden_test(r"golden\*.yml")
 def test_translator_and_machine(golden, caplog):
     caplog.set_level(logging.INFO)
 

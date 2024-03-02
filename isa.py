@@ -3,8 +3,8 @@
 # pylint: disable=missing-class-docstring
 # pylint: disable=missing-module-docstring
 
-from enum import Enum
 import json
+from enum import Enum
 from typing import NamedTuple, Tuple, Union
 
 OPCODE_SIZE = 5
@@ -24,7 +24,8 @@ imm_offs = OPCODE_SIZE
 op_offs = 0
 STDIN, STDOUT = 9999, 9998
 
-class Instruction():
+
+class Instruction:
     @staticmethod
     def encode(opcode: int, args: list[int]) -> int:
         args.clear()
@@ -119,7 +120,6 @@ class OpcodeFormat(NamedTuple):
 
 
 class Opcode(OpcodeFormat, Enum):
-
     HALT = OpcodeFormat(number=0, instruction_type=Instruction)
 
     LW = OpcodeFormat(number=1, instruction_type=Register)
@@ -168,18 +168,18 @@ def normalize(code: list[dict]):
         normalized_instr: dict[str, Union[str, list[int]]] = {
             "opcode": opcode.name}
         if opcode in [Opcode.SW, Opcode.SWI]:
-            destination, source = instr['args']
+            destination, source = instr["args"]
             normalized_instr["args"] = [0, destination, source]
         elif opcode is Opcode.LW:
-            destination, source = instr['args']
+            destination, source = instr["args"]
             normalized_instr["args"] = [destination, source, 0]
         elif opcode is Opcode.LWI:
-            destination, source = instr['args']
+            destination, source = instr["args"]
             normalized_instr["args"] = [destination, 0, source]
         else:
-            normalized_instr["args"] = instr['args']
-        normalized_instr['args'] = list(
-            map(int, normalized_instr['args']))
+            normalized_instr["args"] = instr["args"]
+        normalized_instr["args"] = list(
+            map(int, normalized_instr["args"]))
 
         normalized_code.append(normalized_instr)
     return normalized_code
@@ -224,7 +224,6 @@ def format_instr(instr):
 def write_bin_code(target: str, data: list, code: list):
     """Записать машинный код в bin файл."""
     normalized = normalize(code)
-    code = bytearray()
     _start = len(data)
     program_start = bytearray()
     program_start.append(_start & 255)
