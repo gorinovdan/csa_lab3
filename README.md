@@ -260,9 +260,9 @@ name: CI
 
 on:
   push:
-    branches: [ "main" ]
+    branches: [ "master" ]
   pull_request:
-    branches: [ "main" ]
+    branches: [ "master" ]
 
 permissions:
   contents: read
@@ -285,7 +285,7 @@ jobs:
         poetry install
     - name: Lint with ruff
       run: |
-        poetry run python -m ruff interpreter
+        poetry run python -m ruff translator
         poetry run python -m ruff machine
   test:
     runs-on: ubuntu-latest
