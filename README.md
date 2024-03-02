@@ -285,8 +285,8 @@ jobs:
         poetry install
     - name: Lint with ruff
       run: |
-        poetry run python -m ruff .\translator.py
-        poetry run python -m ruff .\machine.py
+        poetry run python -m ruff translator.py
+        poetry run python -m ruff machine.py
   test:
     runs-on: ubuntu-latest
     steps:
@@ -303,7 +303,7 @@ jobs:
         poetry install
     - name: Run tests
       run: |
-        poetry run pytest . -v --update-goldens
+        poetry run pytest --update-goldens
     needs: lint
 ```
 
