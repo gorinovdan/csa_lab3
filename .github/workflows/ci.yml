@@ -45,5 +45,5 @@ jobs:
         poetry install
     - name: Run tests
       run: |
-        poetry run pytest . -v --update-goldens
+        poetry run pytest . --update-goldens
     needs: lint
