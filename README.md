@@ -1,5 +1,5 @@
-# Транслятор и модель
-
+# CSA lab 3
+Выполнил Горинов Даниил Андреевич P33151
 ### Вариант ###
 
 - `alg | risc | harv | hw | instr | binary | stream | mem | pstr | prob5 | pipeline`
