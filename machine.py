@@ -11,7 +11,7 @@ import sys
 from typing import Callable
 
 from isa import Register, decode_opcode, read_bin_code, format_instr, \
-    Opcode, Immediate, Instruction
+    Opcode, Immediate, Instruction, STDIN, STDOUT
 
 
 class DataPath():
@@ -27,11 +27,12 @@ class DataPath():
     def __init__(self, data: list[int], code: list[int], input_buffer: list):
         self.program_counter = 0
         self.imem = code
-        self.dmem = data
+        self.dmem = data + [0] * 20
         self.data_address = 0
         self.imm_gen = 0
         self.current_data = 0
-        self.registers = [0] * 4
+        self.registers = [0] * 8
+        self.registers[4] = len(self.dmem) - 1
         self.raw_imm = 0
         self.rd = 0
         self.rs1 = 0
@@ -40,8 +41,6 @@ class DataPath():
         self.output_buffer = deque()
         self.a, self.b = 0, 0
         self.computed = 0
-        self.input_addr = len(self.dmem)
-        self.output_addr = len(self.dmem) + 1
 
     def select_instruction(self) -> int:
         self.instruction = self.imem[self.program_counter]
@@ -76,12 +75,28 @@ class DataPath():
             self.computed = self.a // self.b
         elif opcode in (Opcode.REM, Opcode.REMI):
             self.computed = self.a % self.b
+        elif opcode is Opcode.SEQ:
+            self.computed = self.a == self.b
+        elif opcode is Opcode.SNE:
+            self.computed = self.a != self.b
+        elif opcode is Opcode.SGT:
+            self.computed = self.a > self.b
+        elif opcode is Opcode.SLT:
+            self.computed = self.a < self.b
+        elif opcode is Opcode.SNL:
+            self.computed = self.a >= self.b
+        elif opcode is Opcode.SNG:
+            self.computed = self.a <= self.b
+        elif opcode is Opcode.AND:
+            self.computed = self.a & self.b
+        elif opcode is Opcode.OR:
+            self.computed = self.a | self.b
         self.computed = int(self.computed)
 
     def latch_address_to_memory(self):
         """Загружает целевой адрес в память"""
 
-        if self.registers[self.rs1] == self.input_addr:
+        if self.registers[self.rs1] == STDIN:
             if not self.input_buffer:
                 raise EOFError
             self.current_data = self.input_buffer.popleft()
@@ -91,22 +106,21 @@ class DataPath():
 
     def store_data_to_memory_from_reg(self):
         """Загружает данные в память"""
-        if self.registers[self.rs1] == self.output_addr:
+        if self.registers[self.rs1] == STDOUT:
             self.output_buffer.append(chr(self.registers[self.rs2]))
 
         else:
-            self.dmem[self.registers[self.rs1]
-            ] = self.registers[self.rs2]
+            self.dmem[self.registers[self.rs1]] = self.registers[self.rs2]
 
     def store_data_to_memory_from_imm(self):
         """Загружает данные в память"""
-        if self.registers[self.rs1] == self.output_addr:
+        if self.registers[self.rs1] == STDOUT:
             self.output_buffer.append(chr(self.imm_gen))
         else:
             self.dmem[self.registers[self.rs1]] = self.imm_gen
 
     def latch_address_to_memory_from_imm(self):
-        if self.imm_gen == self.input_addr:
+        if self.imm_gen == STDIN:
             if not self.input_buffer:
                 raise EOFError
             self.current_data = self.input_buffer.popleft()
@@ -116,11 +130,17 @@ class DataPath():
 
     def latch_rd_from_memory(self):
         """Значение из памяти перезаписывает регистр"""
-        self.registers[self.rd] = self.current_data
+        if self.rd == 0:
+            self.registers[self.rd] = 0
+        else:
+            self.registers[self.rd] = self.current_data
 
     def latch_rd_from_alu(self):
         """ALU перезаписывает регистр"""
-        self.registers[self.rd] = self.computed
+        if self.rd == 0:
+            self.registers[self.rd] = 0
+        else:
+            self.registers[self.rd] = self.computed
 
     def latch_program_counter(self):
         """Перезаписывает значение PC из ImmGen"""
@@ -190,7 +210,10 @@ class ControlUnit():
     def decode(self):
         """Декодирует инструкцию"""
         self.opcode = decode_opcode(self.instr)
-
+        logging.info(f"TICK: {self.current_tick()}, PC:{self.data_path.program_counter}, REGISTERS: "
+                     f"'r0':{self.data_path.registers[0]} 'r1':{self.data_path.registers[1]}"
+                     f"'r2':{self.data_path.registers[2]} 'r3':{self.data_path.registers[3]}"
+                     f"'r4':{self.data_path.registers[4]}, OPCODE: {self.opcode.name}")
         if self.opcode is Opcode.HALT:
             raise StopIteration()
 
@@ -262,6 +285,10 @@ class ControlUnit():
             self.data_path.latch_program_counter()
             logging.debug("[WRITE BACK]: %d -> pc",
                           self.data_path.program_counter)
+        logging.debug("registers: %s",
+                      self.data_path.registers)
+        logging.debug("dmem[reg4]: %s",
+                      self.data_path.dmem[self.data_path.registers[4]])
 
     def __repr__(self):
         state = f"{{TICK: {self._tick_}" \
@@ -338,7 +365,7 @@ def simulation(data: list[int], code: list[int], input_tokens, limit):
 
     finally:
         dmem = show_data_memory(data_path.dmem)
-        logging.debug("%s", f"Data memory map is\n{dmem}")
+        logging.info("%s", f"Data memory map is\n{dmem}")
 
     return ''.join(data_path.output_buffer), tick_counter // 5, \
         control_unit.current_tick()
@@ -346,7 +373,7 @@ def simulation(data: list[int], code: list[int], input_tokens, limit):
 
 def main(args):
     assert len(args) == 2, \
-        "Wrong arguments: machine.py <code.bin> <input>"
+        "Wrong arguments: machine.py <code.bin> <input.txt>"
     code_file, input_file = args
 
     data, code = read_bin_code(code_file)
@@ -357,7 +384,7 @@ def main(args):
     output, instr_counter, ticks = simulation(
         data, code,
         input_tokens=input_tokens,
-        limit=20000
+        limit=100000
     )
 
     print(f"Output is `{''.join(output)}`")
@@ -365,5 +392,5 @@ def main(args):
 
 
 if __name__ == '__main__':
-    logging.getLogger().setLevel(logging.DEBUG)
+    logging.getLogger().setLevel(logging.INFO)
     main(sys.argv[1:])

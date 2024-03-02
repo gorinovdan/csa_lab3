@@ -2,108 +2,75 @@
 
 ### Вариант ###
 
-`asm | risc  | harv   | hw | tick  | bin  | stream | mem | prob5`
-
-| Особенность             |     |
-|-------------------------|--------|
-| ЯП. Синтаксис           |  синтаксис ассемблера. Необходима поддержка label-ов |
-| Архитектура             | Система команд должна быть упрощенной, в духе RISC архитектур |
-| Организация памяти      |  Гарвардская архитектура|
-| Control Unit            | hardwired. Реализуется как часть модели.|
-| Точность модели         |  процессор необходимо моделировать с точностью до такта|
-| Представление маш. кода |  бинарное представление. При этом необходимо сделать экспорт в формате с мнемоникой команд для возможности анализа машинного кода. |
-| Ввод-вывод              |  Ввод-вывод осуществляется как поток токенов |
-| Ввод-вывод ISA          |  Memory-mapped|
-| Алгоритм                | Каково наименьшее положительное число, которое  делится без остатка на все числа от 1 до 20?|
+- `alg | risc | harv | hw | instr | binary | stream | mem | pstr | prob5 | pipeline`
+- Без усложнения
 
 ## Язык программирования
 
 ```bnf
-<program> ::= 
-        "section data:" <whitespace>* <data_section>?
-        <whitespace> 
-        "section text:" <whitespace>* <instruction_section>?
-<data_section> ::= <data> (<whitespace> <data>)*
-<data> ::= (<label_declaration>) " " (<char_literal> | <number>) ("," (<char_literal> | <number>))*
-<instruction_section> ::= <instruction> (<whitespace> <instruction>)*
-<instruction> ::= (<label_declaration>)? " " <letter>+ (" " (<address>  | (<reg> "," <address>) | (<reg> "," <reg> "," <address>)))? 
-<address> ::= <number> | <label>
-<reg> ::= "x" <number>
-<label_declaration> ::= <label> ":"
-<label> ::= <letter>+
-<char_literal> ::= "'" (<letter> | <digit> | <whitespace>)+ "'"
-<comment> ::= ";" (<letter> | <digit> | <whitespace>)*
-<letter> ::= <lower_letter> | <upper_letter>
-<lower_letter> ::= [a-z]
-<upper_letter> ::= [A-Z]
-<whitespace> ::= " " | "\n" | "\t"
-<number> ::= <digit> | ( ([1-9]) <digit>+ )
-<digit> ::= [0-9]
+<program>         ::= statement | program statement
+<statement>       ::= control_flow | io | allocation | assign | read | write
+<assign>          ::= name "=" expr | name "[" digit "]" = expr
+<io>              ::= "gets" letter | "gets" string | "puts" string | "put" name
+<allocation>      ::= "val" name "=" value ";" | "val" name;" | "val" name "[" digit "]"
+<control_flow>    ::= conditional | conditional else
+<conditional>     ::= while | if
+<if>              ::= "if(" comp_expr ")" block
+<else>            ::= "else" block
+<while>           ::= "while(" comp_expr ")" block
+<block>           ::= "{" program "}"
+<comp_expr>       ::= "(" expr comparison_sign expr ")" | "(" name ")" | "(" value ")"
+<value>           ::= string | digit
+<string>          ::= "\"[\w\s,.:;!?()\\-]+\""
+<expr>            ::= "(" expr ")" | digit | letter | string
+<string>          ::= "\"[\w\s,.:;!?()\\-]+\""
+<comparison_sign> ::= "==" | ">=" | ">" | "<" | "<=" | "!="
+<letter>          ::= "[a-zA-Z]+"
+<digit>           ::= "[0-9]+"
+<op>              ::= "*" | "/" | "%" | "+" | "-" | "<<" | ">>" | "&" | "|" | "^"
 ```
 
-В программе должны быть две обязательные секции - для данных (может быть пустой) и для кода - section data: и section text: соответственно
-Поддерживаются метки.
-Метка - это символьное имя, обозначающее ячейку памяти, которая содержит некоторую команду или данные. Метка обязана начинаться с строчной или прописной буквы, кроме того, может содержать в своём имени цифры
-Метки `INPUT` и `OUTPUT` зарезервированы - используются для ввода-вывода.
+Разработанный язык похож на что-то вроде JavaScript без явной типизации.
 
-В секции данных после метки следуют значения, располагающиеся последовательно по адресам, на которые указывает метка. Поддерживаются строковые литералы.
-Фактически в памяти будет массив, содержащий коды символов строки.
-В секции кода метка будет содержать адрес следующей после нее инструкции
+Строки разделяются точкой с запятой. Язык поддерживает объявление и инициализацию переменных, математические операции, простейшие списки, конструкции if, if-else, while, while-else, операции чтения и записи (gets, put, puts).
 
-Поддерживаются однострочные комментарии, начинаются с символа `;`
+Приведенные выше функции read() и пр - это просто синтаксический сахар.
 
-Код выполняется последовательно.
+Есть только 2 типа литералов - int, str. Типизация сильная, динамическая.
+
+Язык поддерживает области видимости, которые определяются блоками while и if.
 
 Пример:
 
-```nasm
-section data:
-hello: 'Hello, World!',0
-
-section text:
-    _start:
-        addi x2,x0,hello
-        addi x3,x0,OUTPUT
-    write:
-        lw x1,x2
-        beq x1,x0,end
-        sw x3,x1
-        addi x2,x2,1
-        jmp write
-    end:
-        halt
 ```
+val r = 1;
+val i = 2;
+val k;
+val a;
 
-### Поддерживаемые команды
-
-- `lw  rd,rs` - загружает из памяти по адресу `rs` в регистр `rd`
-- `lwi rd,imm` - загружает из памяти по адресу `imm` в регистр `rd`
-- `swi rd,imm` - записывает значение `imm` в память по адресу `rd`
-- `sw rd, rs` - записывает значение регистра `rs` в память по адресу `rd`
-- `add rd,rs1,rs2` - складывает `rs1` и `rs2` и записывает результат в регистр `rd`
-- `sub rd,rs1,rs2` - вычитает из `rs1` `rs2` и записывает результат в регистр rd
-- `mul rd,rs1,rs2` - умножает `rs1` и `rs2` и записывает результат в регистр rd
-- `div rd,rs1,rs2` - делит `rs1` на `rs2` и записывает результат целочисленного деления в регистр `rd`
-- `rem rd,rs1,rs2` - делит `rs1` и `rs2` и записывает результат остаток от деления в регистр `rd`
-- `addi rd,rs1,imm` - складывает `rs1` и `imm` и записывает результат в регистр `rd`
-- `subi rd,rs1,imm` - вычитает из `rs1` `imm` и записывает результат в регистр `rd`
-- `muli rd,rs1,imm` - умножает `rs1` и `imm` и записывает результат в регистр `rd`
-- `divi rd,rs1,imm` - делит `rs1` на `imm` и записывает результат целочисленного деления в регистр rd
-- `remi rd,rs1,imm` - делит `rs1` и `imm` и записывает результат остаток от деления в регистр `rd`
-- `beq rs1,rs2,imm` - условный переход по адресу `imm`, если значения в регистрах `rs1` == `rs2`
-- `bne rs1,rs2,imm` - условный переход по адресу `imm`, если значения в регистрах `rs1` != `rs2`
-- `blt rs1,rs2,imm` - условный переход по адресу `imm`, если значения в регистрах `rs1` < `rs2`
-- `bgt rs1,rs2,imm` - условный переход по адресу `imm`, если значения в регистрах `rs1` > `rs2`
-- `bng rs1,rs2,imm` - условный переход по адресу `imm`, если значения в регистрах `rs1` <= `rs2`
-- `bnl rs1,rs2,imm` - условный переход по адресу `imm`, если значения в регистрах `rs1` >= `rs2`
-- `jmp imm` - безусловный переход по адресу `imm`
-- `halt` - завершение программы
+while (i <= 20) {
+    if (r % i) {
+        k = i;
+        a = k * i;
+        while (a <= 20) {
+            k = i * k;
+            a = k * i;
+        }
+        r = k * r;
+    }
+    i = i + 1;
+}
+```
 
 ### Организация памяти
 
 Работа с памятью
 
 Модель памяти процессора:
+
+По варианту использутется гарвардская архитектура, поэтому память инструкций и память данных разделена.
+- Память данных. Машинное слово -- 32 бита, знаковое. Линейное адресное пространство. Реализуется списком чисел, являющихся пространством памяти.
+- Память команд. Машинное слово -- 32 бита. Реализуется списком сисел, описывающих инструкции.
 
 ```text
 i - number of instructions
@@ -135,9 +102,18 @@ i - number of instructions
 
 ```
 
-## Транслятор
-
-Реализовано в модуле [translator.py](./translator.py)
+- Little-Endian
+- В языке отсутствует константы, поэтому здесь не будут описаны
+- Статические данные последовательно загружаются в память, динамические же хранятся в стеке. Стек, идет с конца data memory
+- Адрес возврата перед вызовом функции кладется на стек
+- Булевые значения где true - 1 , а false - 0
+- Строковые буфферы также статически выделяются в памяти данных при компиляции, изначально заполнены нулями, при их встрече используется адрес начала буффера.
+- Строки сохраняются в памяти данных последовательно по мере обнаружения их в программе транслятором. Один символ - одна ячейка памяти
+- Для того чтобы загружать значения непосредственно в DataPath существует функциональный элемент - Immediately Generator.
+- Литералы не хранятся в статистический памяти
+- Как будут размещены литералы, сохранённые в статическую память, друг относительно друга? - Последовательно друг за другом, выравнивания нет.
+- Как будет размещаться в память литерал, требующий для хранения несколько машинных слов? - Такими литералами являются строки. Они хранятся в памяти байт за байтом.
+- В каких случаях переменная будет отображена на регистр или на статическую память? - Все переменные отображаются в статически аллоцируемую область памяти на этапе компиляции/трансляции.
 
 ## Система команд Процессора
 
@@ -157,10 +133,41 @@ i - number of instructions
   - `memory_access` - доступ к памяти - для инструкций
   - `write_back` - запись результирующего значения (из памяти или АЛУ в регистр). На этом же этапе в инструкциях переходов переписывается значение pc'a
 
-Модель памяти процессора:
+### Набор инструкций
 
-- Память разделена на память команд и память данных.
-- Машинное слово -- 32 бита, знаковое. Линейное адресное пространство.
+| Инструкция | Номер | операнды          | Тип         | Пояснение              |
+|:-----------|-------|:------------------|:------------|------------------------|
+| HALT       | 0     | 0                 | Instruction | Останов                |
+| LW         | 1     | 2 (reg, reg)      | Register    | dmem [rs2] -> rd       |
+| SW         | 2     | 2 (reg, reg)      | Register    | rs1 -> dmem [rs2]      |
+| LWI        | 3     | 2 (reg, imm)      | Immediate   | dmem [imm] -> rd       |
+| SWI        | 4     | 2 (reg, imm)      | Immediate   | rs1 -> dmem [imm]      |
+| JMP        | 5     | 1 (imm)           | Jump        | PC - imm -> PC         |
+| BEQ        | 6     | 3 (rs1, rs2, imm) | Branch      | rs1 == rs2 ? imm -> pc |
+| BNE        | 7     | 3 (rs1, rs2, imm) | Branch      | rs1 != rs2 ? imm -> pc |
+| BLT        | 8     | 3 (rs1, rs2, imm) | Branch      | rs1 < rs2 ? imm -> pc  |
+| BGT        | 9     | 3 (rs1, rs2, imm) | Branch      | rs1 > rs2 ? imm -> pc  |
+| BNL        | 10    | 3 (rs1, rs2, imm) | Branch      | rs1 >= rs2 ? imm -> pc |
+| BNG        | 11    | 3 (rs1, rs2, imm) | Branch      | rs1 <= rs2 ? imm -> pc |
+| SEQ        | 12    | 3 (reg, reg, reg) | Register    | rs1 == rs2 -> rd       |
+| SNE        | 13    | 3 (reg, reg, reg) | Register    | rs1 != rs2 -> rd       |
+| SGT        | 14    | 3 (reg, reg, reg) | Register    | rs1 > rs2 -> rd        |
+| SLT        | 15    | 3 (reg, reg, reg) | Register    | rs1 < rs2 -> rd        |
+| SNL        | 16    | 3 (reg, reg, reg) | Register    | rs1 >= rs2 -> rd       |
+| SNG        | 17    | 3 (reg, reg, reg) | Register    | rs1 <= rs2 -> rd       |
+| AND        | 18    | 3 (reg, reg, reg) | Register    | rs1 & rs2 -> rd        |
+| OR         | 19    | 3 (reg, reg, reg) | Register    | rs1 \| rs2 -> rd       |
+| ADD        | 20    | 3 (reg, reg, reg) | Register    | rs1 + rs2 -> rd        |
+| SUB        | 21    | 3 (reg, reg, reg) | Register    | rs1 - rs2 -> rd        |
+| MUL        | 22    | 3 (reg, reg, reg) | Register    | rs1 * rs2 -> rd        |
+| DIV        | 23    | 3 (reg, reg, reg) | Register    | rs1 / rs2 -> rd        |
+| REM        | 24    | 3 (reg, reg, reg) | Register    | rs1 % rs2 -> rd        |
+| ADDI       | 25    | 3 (reg, reg, imm) | Immediate   | rs1 + imm -> rd        |
+| MULI       | 26    | 3 (reg, reg, imm) | Immediate   | rs1 + imm -> rd        |
+| SUBI       | 27    | 3 (reg, reg, imm) | Immediate   | rs1 + imm -> rd        |
+| DIVI       | 28    | 3 (reg, reg, imm) | Immediate   | rs1 + imm -> rd        |
+| REMI       | 29    | 3 (reg, reg, imm) | Immediate   | rs1 + imm -> rd        |
+
 
 ### Регистры
 
@@ -196,63 +203,26 @@ i - number of instructions
 
 \* imm - имеет переменный размер, соответствующая типу инструкции часть извлекается из инструкции в immediate generator
 
-### Набор инструкции
+#### Binary
 
-Совпадают с [поддерживаемым командами](#поддерживаемые-команды)
+Программы так же представлены в виде бинарного представления
 
-| Инструкция | Тип инструкции | |
-|:-----------------|--------|----------|
-| ADD | Register | rs1 + rs2 -> rd |
-| SUB | Register | rs1 - rs2 -> rd |
-| MUL | Register | rs1 * rs2 -> rd|
-| DIV | Register | rs1 / rs2 -> rd|
-| REM | Register | rs1 % rs2 -> rd|
-| ADDI | Immediate | rs1 + imm -> rd|
-| SUBI | Immediate | rs1 + imm -> rd|
-| MULI | Immediate | rs1 + imm -> rd|
-| DIVI | Immediate | rs1 + imm -> rd|
-| REMI | Immediate | rs1 + imm -> rd|
-| BEQ | Branch | rs1 == rs2 ? imm -> pc |
-| BNE | Branch | rs1 != rs2 ? imm -> pc |
-| BLT | Branch | rs1 < rs2 ? imm -> pc |
-| BGT | Branch | rs1 > rs2 ? imm -> pc |
-| BNL | Branch | rs1 >= rs2 ? imm -> pc |
-| BNG | Branch | rs1 <= rs2 ? imm -> pc |
-| LW | Register | dmem [rs2] -> rd |
-| LWI | Immediate | dmem [imm] -> rd |
-| SW | Register |  rs1 -> dmem [rs2] |
-| SWI | Immediate |  rs1 -> dmem [imm] |
-| JMP | JUMP |  imm -> pc |
-| HALT |  |   |
+- Машинный код сериализуется в бинарный код.
+- Сначала в бинарный код записываем всю выделенную data memory
+- Затем в бинарный код переводится список словарей с ключами opcode и args. Пример словаря:  `{'opcode': 'LW', 'args': [1, 4, 0]}`
 
-#### Struct
+## Транслятор
 
-Программы так же представлены в виде JSON
+Интерфейс командной строки: `translator.py <input_file> <target_json_file> <target_bin_file>`
 
-- Машинный код сериализуется в список JSON.
-- Один элемент списка, одна инструкция (так как в risc размер инструкций фиксированный).
-- Индекс списка - адрес инструкции. Используется для команд перехода.
+Реализовано в модуле [translator.py](./translator.py)
 
-Пример:
-
-```json
-[
-    {
-        "opcode": "ADD",
-        "args": [
-            "arg1",
-            "arg2",
-            "arg3"
-        ]
-    }
-]
-```
-
-где:
-
-- `opcode` -- строка с кодом операции;
-- `args` -- список аргументов (может отсутствовать (только в случае HALT));
-
+Этапы трансляции (функция translate):
+- preprocess - Предобработка. Удаление пустых строк и комментариев, а также построчное разбиение
+- tokenize - Токенизация. Трансформирование текста в deque токенов.
+- buildAST - Перевод представления, полученного после токенизации, в дерево AST.
+- translate - Трансляция АСТ в машинный код.
+- 
 ### Модель процессора
 
 Реализовано в модуле [machine.py](./machine.py)
@@ -266,7 +236,7 @@ i - number of instructions
 Реализован в классе `ControlUnit`.
 
 - Hardwired (реализовано полностью на python).
-- Моделирование на уровне тактов.
+- Моделирование на уровне инструкций.
 - Трансляция инструкции в последовательность (5 тактов) сигналов: `tick_by_tick`.
 
 Особенности работы модели:
@@ -278,28 +248,14 @@ i - number of instructions
   - `StopIteration` -- если выполнена инструкция `halt`.
 - Управление симуляцией реализовано в функции `simulate`.
 
-## Апробация
+## Тестирование
 
-| ФИО              | алг.  | LoC       | code байт|code инстр. | инстр. | такт. |
-|------------------|-------|---------|---------|---------|--------|------|
-| Сагайдак Алина Алексеевна |cat| 46| 15 | 188  | 240     | 1201     |
-|  |hello| 25| 8 | 92  | 69    | 346    |
-|  |prob5| 242 | 89 | 496 | 3778 | 18891|
+1. [hello world](./golden/hello_world.yml) - выводит `Hello, world!` в stdin.
+2. [cat](./golden/cat.yml) - программа `cat`, повторяем ввод на выводе.
+3. [hello_user_name](./golden/hello_user_name.yml) - чтение имени из файла и вывод приветствия
+4. [prob5](./golden/prob5.yml) - problem 5
 
-где:
-
-- алг. -- название алгоритма (hello, cat, или как в варианте)
-- LoC -- кол-во строк кода в реализации алгоритма
-- code байт -- кол-во байт в машинном коде (если бинарное представление)
-- code инстр. -- кол-во инструкций в машинном коде
-- инстр. -- кол-во инструкций, выполненных при работе алгоритма
-- такт. -- кол-во тактов, которое заняла работа алгоритма
-
-1. [hello world](./programs/hello_world.asm) - выводит `Hello, world!` в stdin.
-2. [cat](./programs/cat.asm) - программа `cat`, повторяем ввод на выводе.
-3. [prob5](./programs/prob5.asm) - problem 5
-
-Интеграционные тесты реализованы тут: [integration_test](./integration_test.py)
+Golden тесты реализованы тут: [integration_test](./integration_test.py)
 
 CI:
 
@@ -328,18 +284,12 @@ lab3:
 Пример использования и журнал работы процессора на примере `prob5`:
 
 ```bash
-> python3 translator.py programs/prob5.json programs/prob5.bin
-source LoC: 242 code instr: 112 bytes: 452
-
+python .\translator.py .\programs\prob5.alg .\programs\prob5.json .\programs\prob5.bin
+python .\machine.py .\programs\prob5.bin .\programs\input.txt
 ```
 
 [prob5.json](programs/prob5.bin)
 [prob5.bin](programs/prob5.bin)
 
-```python
 
-> ./machine.py programs/prob5.bin programs/input.txt
-
-```
-
-Текст вывода можно посмотреть [тут](./outputs/prob5.log)
+Текст вывода и ход работы [тут](./golden/prob5.yml)

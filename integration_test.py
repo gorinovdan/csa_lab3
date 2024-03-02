@@ -1,68 +1,37 @@
-# pylint: disable=missing-class-docstring     # чтобы не быть Капитаном Очевидностью
-# pylint: disable=missing-function-docstring  # чтобы не быть Капитаном Очевидностью
-# pylint: disable=line-too-long               # строки с ожидаемым выводом
-"""Интеграционные тесты транслятора и машины
-"""
-
 import contextlib
 import io
+import logging
 import os
 import tempfile
-import unittest
 
-import machine
+import pytest
 import translator
+import machine
 
 
-class TestCases(unittest.TestCase):
+@pytest.mark.golden_test("golden\*.yml")
+def test_translator_and_machine(golden, caplog):
+    caplog.set_level(logging.INFO)
 
-    def test_cat(self):
-        # Создаём временную папку для скомпилированного файла. Удаляется автоматически.
-        with tempfile.TemporaryDirectory() as tmpdirname:
-            source = "./tests/sources/cat.asm"
-            target = os.path.join(tmpdirname, "machine_code.out")
-            input_stream = "./tests/inputs/input2.txt"
+    with tempfile.TemporaryDirectory() as tmpdirname:
+        source = os.path.join(tmpdirname, "source.alg")
+        input_stream = os.path.join(tmpdirname, "input.txt")
+        target_json = os.path.join(tmpdirname, "target.json")
+        target_bin = os.path.join(tmpdirname, "target.bin")
 
-            # Собираем весь стандартный вывод в переменную stdout.
-            with contextlib.redirect_stdout(io.StringIO()) as stdout:
-                # with self.assertLogs('', level='INFO') as logs:
-                translator.main([source, target, target])
-                machine.main([target, input_stream])
-                assert stdout.getvalue() == (
-                    "source LoC: 40 code instr: 15 code bytes: 188\n"
-                    "Output is `Arhitecture of Computer\x00`\n"
-                    "instr_counter: 240 ticks: 1201\n"
-                )
+        with open(source, "w", encoding="utf-8") as file:
+            file.write(golden["in_source"])
+        with open(input_stream, "w", encoding="utf-8") as file:
+            file.write(golden["in_stdin"])
 
-    def test_hello(self):
-        with tempfile.TemporaryDirectory() as tmpdirname:
-            source = "./tests/sources/hello.asm"
-            target = os.path.join(tmpdirname, "machine_code.out")
-            input_stream = "./tests/inputs/input.txt"
+        with contextlib.redirect_stdout(io.StringIO()) as stdout:
+            translator.main([source, target_json, target_bin])
+            print("============================================================")
+            machine.main([target_bin, input_stream])
 
-            # Собираем весь стандартный вывод в переменную stdout.
-            with contextlib.redirect_stdout(io.StringIO()) as stdout:
-                translator.main([source, target, target])
-                machine.main([target, input_stream])
-            assert stdout.getvalue() == (
-                "source LoC: 25 code instr: 8 code bytes: 92\n"
-                "Output is `Hello, World!`\n"
-                "instr_counter: 69 ticks: 346\n"
-            )
+        with open(target_json, encoding="utf-8") as file:
+            code = file.read()
 
-    def test_prop5(self):
-        with tempfile.TemporaryDirectory() as tmpdirname:
-            source = "./tests/sources/prob5.asm"
-            target = os.path.join(tmpdirname, "machine_code.out")
-            input_stream = "./tests/inputs/input.txt"
-
-            with contextlib.redirect_stdout(io.StringIO()) as stdout:
-                # Собираем журнал событий по уровню INFO в переменную logs.
-                # with self.assertLogs('', level='INFO') as logs:
-                translator.main([source, target, target])
-                machine.main([target, input_stream])
-                assert stdout.getvalue() == (
-                    "source LoC: 242 code instr: 89 code bytes: 496\n"
-                    "Output is `232792560`\n"
-                    "instr_counter: 3778 ticks: 18891\n"
-                )
+        assert code == golden.out["out_code"]
+        assert stdout.getvalue() == golden.out["out_stdout"]
+        assert caplog.text == golden.out["out_log"]

@@ -8,21 +8,21 @@ import json
 from typing import NamedTuple, Tuple, Union
 
 OPCODE_SIZE = 5
-REG_SIZE = 2
-IMM_SIZE = 21
+REG_SIZE = 3
+IMM_SIZE = 18
 
-rd_m = 0b11_00_00_000000000000000000000_00000
-rs1_m = 0b00_11_00_000000000000000000000_00000
-rs2_m = 0b00_00_11_000000000000000000000_00000
-imm_m = 0b00_00_00_111111111111111111111_00000
-op_m = 0b00_00_00_000000000000000000000_11111
+rd_m = 0b111_000_000_000000000000000000_00000
+rs1_m = 0b000_111_000_000000000000000000_00000
+rs2_m = 0b000_000_111_000000000000000000_00000
+imm_m = 0b000_000_000_111111111111111111_00000
+op_m = 0b000_000_000_000000000000000000_11111
 
 rd_offs = REG_SIZE * 2 + IMM_SIZE + OPCODE_SIZE
 rs1_offs = REG_SIZE + IMM_SIZE + OPCODE_SIZE
 rs2_offs = IMM_SIZE + OPCODE_SIZE
 imm_offs = OPCODE_SIZE
 op_offs = 0
-
+STDIN, STDOUT = 9999, 9998
 
 class Instruction():
     @staticmethod
@@ -115,7 +115,7 @@ class Jump(Instruction):
 
 class OpcodeFormat(NamedTuple):
     number: int
-    instruction_type: Instruction
+    instruction_type: type[Instruction]
 
 
 class Opcode(OpcodeFormat, Enum):
@@ -129,24 +129,32 @@ class Opcode(OpcodeFormat, Enum):
 
     JMP = OpcodeFormat(number=5, instruction_type=Jump)
 
-    BEQ = OpcodeFormat(number=7, instruction_type=Branch)
-    BNE = OpcodeFormat(number=8, instruction_type=Branch)
-    BLT = OpcodeFormat(number=9, instruction_type=Branch)
-    BGT = OpcodeFormat(number=10, instruction_type=Branch)
-    BNL = OpcodeFormat(number=11, instruction_type=Branch)
-    BNG = OpcodeFormat(number=12, instruction_type=Branch)
+    BEQ = OpcodeFormat(number=6, instruction_type=Branch)
+    BNE = OpcodeFormat(number=7, instruction_type=Branch)
+    BLT = OpcodeFormat(number=8, instruction_type=Branch)
+    BGT = OpcodeFormat(number=9, instruction_type=Branch)
+    BNL = OpcodeFormat(number=10, instruction_type=Branch)
+    BNG = OpcodeFormat(number=11, instruction_type=Branch)
 
-    ADD = OpcodeFormat(number=13, instruction_type=Register)
-    SUB = OpcodeFormat(number=14, instruction_type=Register)
-    MUL = OpcodeFormat(number=15, instruction_type=Register)
-    DIV = OpcodeFormat(number=16, instruction_type=Register)
-    REM = OpcodeFormat(number=17, instruction_type=Register)
+    SEQ = OpcodeFormat(number=12, instruction_type=Register)
+    SNE = OpcodeFormat(number=13, instruction_type=Register)
+    SGT = OpcodeFormat(number=14, instruction_type=Register)
+    SLT = OpcodeFormat(number=15, instruction_type=Register)
+    SNL = OpcodeFormat(number=16, instruction_type=Register)
+    SNG = OpcodeFormat(number=17, instruction_type=Register)
+    AND = OpcodeFormat(number=18, instruction_type=Register)
+    OR = OpcodeFormat(number=19, instruction_type=Register)
+    ADD = OpcodeFormat(number=20, instruction_type=Register)
+    SUB = OpcodeFormat(number=21, instruction_type=Register)
+    MUL = OpcodeFormat(number=22, instruction_type=Register)
+    DIV = OpcodeFormat(number=23, instruction_type=Register)
+    REM = OpcodeFormat(number=24, instruction_type=Register)
 
-    ADDI = OpcodeFormat(number=18, instruction_type=Immediate)
-    MULI = OpcodeFormat(number=19, instruction_type=Immediate)
-    SUBI = OpcodeFormat(number=20, instruction_type=Immediate)
-    DIVI = OpcodeFormat(number=21, instruction_type=Immediate)
-    REMI = OpcodeFormat(number=22, instruction_type=Immediate)
+    ADDI = OpcodeFormat(number=25, instruction_type=Immediate)
+    MULI = OpcodeFormat(number=26, instruction_type=Immediate)
+    SUBI = OpcodeFormat(number=27, instruction_type=Immediate)
+    DIVI = OpcodeFormat(number=28, instruction_type=Immediate)
+    REMI = OpcodeFormat(number=29, instruction_type=Immediate)
 
 
 opcodes_by_number = dict((opcode.number, opcode) for opcode in Opcode)
@@ -217,9 +225,7 @@ def write_bin_code(target: str, data: list, code: list):
     """Записать машинный код в bin файл."""
     normalized = normalize(code)
     code = bytearray()
-    # record section data
     _start = len(data)
-    # record section code
     program_start = bytearray()
     program_start.append(_start & 255)
     program_start.append((_start >> 8) & 255)
